@@ -13,9 +13,9 @@ public class Faculty extends Student{
 
     @Override
     protected double applyDiscount(double feePreDiscount) {
-        double currentFee = feePreDiscount - feePreDiscount* DISCOUNT_RATE;
+        double currentFee = feePreDiscount - (feePreDiscount* DISCOUNT_RATE);
         if (isTenured){
-            currentFee -= currentFee* TENURE_DISCOUNT_RATE;
+            currentFee -= (currentFee* TENURE_DISCOUNT_RATE);
         }
         return currentFee;
     }

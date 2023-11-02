@@ -7,8 +7,9 @@ import java.util.List;
 public abstract class Student {
 
     double GPA;
-
     GPADiscountStrategy gpaDiscountStrategy;
+    List<Course> courses = new ArrayList<>();
+
 
     public void setGpaDiscountStrategy(GPADiscountStrategy gpaDiscountStrategy) {
         this.gpaDiscountStrategy = gpaDiscountStrategy;
@@ -22,23 +23,21 @@ public abstract class Student {
         this.GPA = GPA;
     }
 
-    List<Course> courses = new ArrayList<>();
-
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
+
     public final double getCurrentFee(){
 
        double feePreDiscount = calculateTotalCourseCostPreDiscount();
-        System.out.println(feePreDiscount);
+
        double currentFee = applyDiscount(feePreDiscount);
-        System.out.println(currentFee);
+
        currentFee = applyGPADiscount(this.gpaDiscountStrategy, currentFee);
-        System.out.println(currentFee);
+
        return currentFee;
     }
-
     protected double calculateTotalCourseCostPreDiscount(){
         double totalCost=0;
 

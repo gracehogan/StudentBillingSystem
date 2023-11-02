@@ -8,11 +8,11 @@ public abstract class Student {
 
     List<Course> courses = new ArrayList<>();
 
-    public double getCurrentFee(){
+    public final double getCurrentFee(){
 
        double feePreDiscount = calculateTotalCourseCostPreDiscount();
        double currentFee = applyDiscount(feePreDiscount);
-        return currentFee;
+       return currentFee;
     }
 
     protected double calculateTotalCourseCostPreDiscount(){
@@ -24,6 +24,5 @@ public abstract class Student {
         return totalCost;
     }
     protected abstract double applyDiscount(double feePreDiscount);
-
 
 }

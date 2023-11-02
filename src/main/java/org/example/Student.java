@@ -8,6 +8,12 @@ public abstract class Student {
 
     double GPA;
 
+    GPADiscountStrategy gpaDiscountStrategy;
+
+    public void setGpaDiscountStrategy(GPADiscountStrategy gpaDiscountStrategy) {
+        this.gpaDiscountStrategy = gpaDiscountStrategy;
+    }
+
     public double getGPA() {
         return GPA;
     }
@@ -18,10 +24,18 @@ public abstract class Student {
 
     List<Course> courses = new ArrayList<>();
 
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     public final double getCurrentFee(){
 
        double feePreDiscount = calculateTotalCourseCostPreDiscount();
+        System.out.println(feePreDiscount);
        double currentFee = applyDiscount(feePreDiscount);
+        System.out.println(currentFee);
+       currentFee = applyGPADiscount(this.gpaDiscountStrategy, currentFee);
+        System.out.println(currentFee);
        return currentFee;
     }
 
@@ -34,5 +48,10 @@ public abstract class Student {
         return totalCost;
     }
     protected abstract double applyDiscount(double feePreDiscount);
+
+    protected double applyGPADiscount (GPADiscountStrategy gpaDiscountStrategy, double currentFee){
+     return gpaDiscountStrategy.calculateGPADiscount(this, currentFee);
+    }
+
 
 }

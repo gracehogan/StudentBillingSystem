@@ -6,4 +6,5 @@ public class Undergraduate extends Student {
     protected double applyDiscount(double feePreDiscount) {
         return feePreDiscount;
     }
+
 }

@@ -6,6 +6,16 @@ import java.util.List;
 
 public abstract class Student {
 
+    double GPA;
+
+    public double getGPA() {
+        return GPA;
+    }
+
+    public void setGPA(double GPA) {
+        this.GPA = GPA;
+    }
+
     List<Course> courses = new ArrayList<>();
 
     public final double getCurrentFee(){
